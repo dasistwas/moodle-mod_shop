@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="mod/shop/db" VERSION="20070401" COMMENT="XMLDB file for Moodle mod/shop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="shop" COMMENT="Default comment for shop, please edit me" NEXT="shop_transactions">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="course"/>
+        <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="Course shop activity belongs to" PREVIOUS="id" NEXT="name"/>
+        <FIELD NAME="name" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="name field for moodle instances" PREVIOUS="course" NEXT="intro"/>
+        <FIELD NAME="intro" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" COMMENT="General introduction of the shop activity" PREVIOUS="name" NEXT="introformat"/>
+        <FIELD NAME="introformat" TYPE="int" LENGTH="4" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" COMMENT="Format of the intro field (MOODLE, HTML, MARKDOWN...)" PREVIOUS="intro" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="introformat" NEXT="timemodified"/>
+        <FIELD NAME="timemodified" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timecreated" NEXT="price"/>
+        <FIELD NAME="price" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="timemodified" NEXT="service"/>
+        <FIELD NAME="service" TYPE="char" LENGTH="150" NOTNULL="true" SEQUENCE="false" PREVIOUS="price" NEXT="unit"/>
+        <FIELD NAME="unit" TYPE="char" LENGTH="150" NOTNULL="true" SEQUENCE="false" PREVIOUS="service" NEXT="unitplural"/>
+        <FIELD NAME="unitplural" TYPE="char" LENGTH="150" NOTNULL="true" SEQUENCE="false" PREVIOUS="unit" NEXT="paypalmail"/>
+        <FIELD NAME="paypalmail" TYPE="char" LENGTH="150" NOTNULL="true" SEQUENCE="false" PREVIOUS="unitplural"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="shop_transactions" COMMENT="Here are all the units bought by a user" PREVIOUS="shop" NEXT="shop_usedunits">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="shop"/>
+        <FIELD NAME="shop" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="id" NEXT="buyerid"/>
+        <FIELD NAME="buyerid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="shop" NEXT="moneypaid"/>
+        <FIELD NAME="moneypaid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="buyerid" NEXT="transactiontime"/>
+        <FIELD NAME="transactiontime" TYPE="int" LENGTH="20" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="moneypaid" NEXT="ispaid"/>
+        <FIELD NAME="ispaid" TYPE="int" LENGTH="1" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="transactiontime" NEXT="units"/>
+        <FIELD NAME="units" TYPE="int" LENGTH="5" NOTNULL="false" SEQUENCE="false" COMMENT="Reason of transfer" PREVIOUS="ispaid"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for shop_transactions" NEXT="shop"/>
+        <KEY NAME="shop" TYPE="foreign" FIELDS="shop" REFTABLE="shop" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="buyerid" UNIQUE="false" FIELDS="buyerid"/>
+      </INDEXES>
+    </TABLE>
+    <TABLE NAME="shop_usedunits" COMMENT="Here are all the units consumed by the users" PREVIOUS="shop_transactions">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="shop"/>
+        <FIELD NAME="shop" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="id" NEXT="buyerid"/>
+        <FIELD NAME="buyerid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="shop" NEXT="transactiontime"/>
+        <FIELD NAME="transactiontime" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="buyerid" NEXT="comment"/>
+        <FIELD NAME="comment" TYPE="text" LENGTH="medium" NOTNULL="false" SEQUENCE="false" COMMENT="Reason of transfer" PREVIOUS="transactiontime" NEXT="units"/>
+        <FIELD NAME="units" TYPE="int" LENGTH="5" NOTNULL="false" SEQUENCE="false" COMMENT="Total number of already used units" PREVIOUS="comment"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id" COMMENT="Primary key for shop_usedunits" NEXT="shop"/>
+        <KEY NAME="shop" TYPE="foreign" FIELDS="shop" REFTABLE="shop" REFFIELDS="id" PREVIOUS="primary"/>
+      </KEYS>
+      <INDEXES>
+        <INDEX NAME="buyerid" UNIQUE="false" FIELDS="buyerid"/>
+      </INDEXES>
+    </TABLE>
+  </TABLES>
+</XMLDB>
