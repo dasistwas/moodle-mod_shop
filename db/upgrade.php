@@ -42,8 +42,10 @@ defined('MOODLE_INTERNAL') || die();
  */
 function xmldb_shop_upgrade($oldversion=0) {
 
-    global $CFG, $THEME, $db;
+    global $CFG, $THEME, $DB;
 
     $result = true;
+    
+    return $result;
 
 }
