@@ -201,12 +201,15 @@ function shop_scale_used($shopid, $scaleid) {
  * @return boolean True if the scale is used by any shop
  */
 function shop_scale_used_anywhere($scaleid) {
+	/**
 	global $DB;
 	if ($scaleid and $DB->record_exists('shop', array('grade' => -$scaleid))) {
 		return true;
 	} else {
 		return false;
 	}
+	**/
+	return false;
 }
 
 
