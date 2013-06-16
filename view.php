@@ -157,7 +157,7 @@ else {
 		echo $OUTPUT->box_start('generalbox boxaligncenter boxwidthwide');
 		echo "<h1>".get_string('overview', 'shop')."</h1>";
 		//display participants and their amount of credits
-		if ($roles = get_roles_used_in_context($context, true)) {
+		if ($roles = get_roles_used_in_context($coursecontext, true)) {
 			$participants = get_users_by_capability($coursecontext, 'moodle/course:view', 'u.id,username,firstname,lastname');
 		}
 		echo '<h2 style="font-weight: bold;">'.get_string('creditsofparticipants', 'shop').'</h2>';
