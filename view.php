@@ -157,7 +157,7 @@ else {
 		echo $OUTPUT->box_start('generalbox boxaligncenter boxwidthwide');
 		echo "<h1>".get_string('overview', 'shop')."</h1>";
 		//display participants and their amount of credits
-		$participants = get_users_by_capability($coursecontext, 'moodle/course:view', 'u.id,username,firstname,lastname', '', '', '0', '0',true);
+		$participants = get_users_by_capability($coursecontext, 'moodle/course:view', 'u.id,username,firstname,lastname', '', '', '0', '0',false);
 		print_object($participants);
 		echo '<h2 style="font-weight: bold;">'.get_string('creditsofparticipants', 'shop').'</h2>';
 		echo '<ul style="list-style-type:none; padding:0; margin:0;"><li style="padding-bottom:5px;"><div style="width:=100%; font-weight: bold;"><div style="width:20%; display:inline-block;">'.get_string('user').'</div><div style="width:20%; display:inline-block;">'.get_string('credits', 'shop').'</div><div style="width:20%; display:inline-block;">'.get_string('consumed','shop').'</div><div style="width:20%; display:inline-block;">'.get_string('comment','shop').'</div><div style="width:20%; display:inline-block;">'.get_string('savechanges').'</div></div></li>';
