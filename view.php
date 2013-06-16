@@ -62,7 +62,8 @@ $PAGE->set_heading($course->shortname);
 $PAGE->set_button(update_module_button($cm->id, $course->id, get_string('modulename', 'shop')));
 
 // TODO navigation will be changed yet for Moodle 2.0
-$context = get_context_instance(CONTEXT_MODULE, $cm->id);
+$context = context_module::instance($cm->id);
+$coursecontext = context_course::instance($course->id);
 $strshops = get_string('modulenameplural', 'shop');
 $strshop = get_string('modulename', 'shop');
 
