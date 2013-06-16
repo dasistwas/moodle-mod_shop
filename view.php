@@ -158,7 +158,6 @@ else {
 		echo "<h1>".get_string('overview', 'shop')."</h1>";
 		//display participants and their amount of credits
 		$participants = get_enrolled_users($coursecontext,'','0','u.id,username,firstname,lastname');
-		print_object($participants);
 		echo '<h2 style="font-weight: bold;">'.get_string('creditsofparticipants', 'shop').'</h2>';
 		echo '<ul style="list-style-type:none; padding:0; margin:0;"><li style="padding-bottom:5px;"><div style="width:=100%; font-weight: bold;"><div style="width:20%; display:inline-block;">'.get_string('user').'</div><div style="width:20%; display:inline-block;">'.get_string('credits', 'shop').'</div><div style="width:20%; display:inline-block;">'.get_string('consumed','shop').'</div><div style="width:20%; display:inline-block;">'.get_string('comment','shop').'</div><div style="width:20%; display:inline-block;">'.get_string('savechanges').'</div></div></li>';
 		$i = 0;
