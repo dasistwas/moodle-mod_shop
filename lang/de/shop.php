@@ -31,6 +31,8 @@ defined('MOODLE_INTERNAL') || die();
 
 //basic definitions and mod_form
 $string['modulename'] = 'Shop';
+$string['pluginname'] = 'Shop';
+
 $string['modulenameplural'] = 'Shops';
 $string['shop:addinstance'] = 'Neuen Shop anlegen';
 $string['pluginadministration'] = 'Shop verwalten';
