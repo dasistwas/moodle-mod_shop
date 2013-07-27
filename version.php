@@ -28,7 +28,7 @@
  */
 
 
-$module->version  = 2013040800;  // The current module version (Date: YYYYMMDDXX)
+$module->version  = 2013072800;  // The current module version (Date: YYYYMMDDXX)
 $module->requires = 2010112400;  // Requires this Moodle 2.X version
 $module->release = '2.4';
 $module->maturity = MATURITY_STABLE;
