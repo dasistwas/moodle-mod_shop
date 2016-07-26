@@ -28,8 +28,9 @@
  */
 
 
-$module->version  = 2013072800;  // The current module version (Date: YYYYMMDDXX)
-$module->requires = 2010112400;  // Requires this Moodle 2.X version
-$module->release = '2.4';
-$module->maturity = MATURITY_STABLE;
-$module->cron     = 0;           // Period for cron to check this module (secs)
+$plugin->version  = 2013072800;  // The current module version (Date: YYYYMMDDXX)
+$plugin->component  = 'mod_shop';  // Component name
+$plugin->requires = 2010112400;  // Requires this Moodle 2.X version
+$plugin->release = '2.4';
+$plugin->maturity = MATURITY_STABLE;
+$plugin->cron     = 0;           // Period for cron to check this module (secs)

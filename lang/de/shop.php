@@ -35,6 +35,10 @@ $string['pluginname'] = 'Shop';
 
 $string['modulenameplural'] = 'Shops';
 $string['shop:addinstance'] = 'Neuen Shop anlegen';
+$string['shop:buy'] = 'Kaufen';
+$string['shop:getpayment'] = 'Zalungen erhalten';
+$string['shop:view'] = 'Shop sehen';
+
 $string['pluginadministration'] = 'Shop verwalten';
 
 $string['shopfieldset'] = 'Einstellungen vornehmen';

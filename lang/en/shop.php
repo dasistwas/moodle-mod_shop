@@ -37,6 +37,11 @@ $string['modulenameplural'] = 'Shops';
 $string['pluginadministration'] = 'Edit shop';
 
 $string['shop:addinstance'] = 'Add new shop';
+$string['shop:buy'] = 'Buy';
+$string['shop:getpayment'] = 'Receive payments';
+$string['shop:view'] = 'View shop';
+
+
 $string['shopfieldset'] = 'Settings';
 $string['shopintro'] = 'Shop Intro';
 $string['shopname'] = 'Shop name';
